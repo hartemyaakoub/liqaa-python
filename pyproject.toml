@@ -1,0 +1,53 @@
+[build-system]
+requires = ["hatchling>=1.21"]
+build-backend = "hatchling.build"
+
+[project]
+name = "liqaa"
+version = "1.0.0"
+description = "Server-side Python SDK for LIQAA — drop-in video calls and messaging."
+authors = [{ name = "Yaakoub HARTEM", email = "yaakoub.hartem.mhsi@gmail.com" }]
+license = "MIT"
+readme = "README.md"
+requires-python = ">=3.9"
+keywords = ["liqaa", "video", "webrtc", "video-api", "messaging", "rtc", "real-time", "video-sdk", "tkawen"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Communications :: Conferencing",
+    "Topic :: Internet :: WWW/HTTP",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+dependencies = []
+
+[project.urls]
+Homepage      = "https://liqaa.io"
+Documentation = "https://liqaa.io/docs"
+Repository    = "https://github.com/hartemyaakoub/liqaa-python"
+Issues        = "https://github.com/hartemyaakoub/liqaa-python/issues"
+Changelog     = "https://github.com/hartemyaakoub/liqaa-python/blob/main/CHANGELOG.md"
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "pytest-cov>=5", "ruff>=0.5", "mypy>=1.10"]
+
+[tool.hatch.build.targets.sdist]
+include = ["liqaa", "README.md", "LICENSE", "CHANGELOG.md"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["liqaa"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py39"
+
+[tool.mypy]
+strict = true
+python_version = "3.9"
