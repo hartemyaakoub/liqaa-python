@@ -33,18 +33,18 @@ from liqaa import LiqaaClient
 client = LiqaaClient(public_key=os.environ["LIQAA_PK"], secret_key=os.environ["LIQAA_SK"])
 
 token = client.exchange_sdk_token(email="visitor@example.com", name="Anonymous Visitor")
-print(token["sdk_token"])  # → tkc_eyJhbGciOi…
+print(token["sdk_token"]) # → tkc_eyJhbGciOi…
 ```
 
 ### Create a persistent room
 
 ```python
 conv = client.create_conversation(
-    caller_email="agent@yoursite.com",
-    callee_email="customer@example.com",
-    external_conversation_id="ticket-42",
+ caller_email="agent@yoursite.com",
+ callee_email="customer@example.com",
+ external_conversation_id="ticket-42",
 )
-print(conv["join_url"])  # → https://liqaa.io/meeting/room-abc123
+print(conv["join_url"]) # → https://liqaa.io/meeting/room-abc123
 ```
 
 ### Verify a webhook
@@ -58,12 +58,12 @@ app = Flask(__name__)
 
 @app.post("/webhooks/liqaa")
 def handle():
-    sig = request.headers.get("X-LIQAA-Signature", "")
-    if not verifier.verify(request.get_data(), sig):
-        abort(401)
-    event = request.get_json()
-    # event["event"] == "call.started" / "call.ended" / etc.
-    return "", 204
+ sig = request.headers.get("X-LIQAA-Signature", "")
+ if not verifier.verify(request.get_data(), sig):
+ abort(401)
+ event = request.get_json()
+# event["event"] == "call.started" / "call.ended" / etc.
+ return "", 204
 ```
 
 ## Async support
@@ -72,8 +72,8 @@ def handle():
 from liqaa.aio import AsyncLiqaaClient
 
 async def main():
-    client = AsyncLiqaaClient(public_key=..., secret_key=...)
-    conv = await client.create_conversation(caller_email="a@b.com", callee_email="c@d.com")
+ client = AsyncLiqaaClient(public_key=..., secret_key=...)
+ conv = await client.create_conversation(caller_email="a@b.com", callee_email="c@d.com")
 ```
 
 ## Frameworks
